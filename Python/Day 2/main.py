@@ -5,10 +5,10 @@ def shapePoints(shape: int) -> int:
 def outcomePoints(myMove: int, opponentMove: int) -> int:
     if myMove == 1:
         return 3 + shapePoints(opponentMove)  # Draw
-    # adding 1 and moding by 3 makes it equal to the winning move
+    # adding 1 and modding by 3 makes it equal to the winning move
     elif myMove == 0:
         return 0 + shapePoints((opponentMove - 1) % 3)  # Lose
-    # subtracting 1 and moding by 3 makes it equal to the winning move
+    # subtracting 1 and modding by 3 makes it equal to the winning move
     elif (myMove) == 2:
         return 6 + shapePoints((opponentMove + 1) % 3)  # Win
 
