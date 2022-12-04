@@ -14,7 +14,7 @@ def outcomePoints(myMove: int, opponentMove: int) -> int:
 
 
 def main():
-    f = open("Day 2/input.txt", "r")
+    f = open("Python/Day 2/input.txt", "r")
     lines = f.read().split("\n")
     Score = 0
     print(lines)
@@ -25,11 +25,6 @@ def main():
             opponentMove = ord(line[0]) - ord("A")
             # give myMove in 0-2 range being [Rock,Paper,Scissors]
             myMove = ord(line[1]) - ord("X")
-            moves = ["Rock", "Paper", "Scizzors"]
-            print(
-                moves[opponentMove], moves[myMove], outcomePoints(myMove, opponentMove)
-            )
-            print(Score)
             Score = Score + outcomePoints(myMove, opponentMove)
     print(Score)
 
