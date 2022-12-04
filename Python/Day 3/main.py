@@ -8,14 +8,10 @@ def pointScore(ch):  # scores the points based on the priority
 def part1(lines):
     totalPriority = 0
     for line in lines:
-        mid = int((len(line) / 2))
-        rucksack1 = line[0:mid]
+        mid = len(line) // 2
+        rucksack1 = line[:mid]
         rucksack2 = line[mid:]  # splits the line into 2 even parts
-        seen = []
-        for ch in rucksack1:
-            if ch in rucksack2 and ch not in seen:
-                seen.append(ch)  # prevents letters from being double-counted
-                totalPriority += pointScore(ch)
+        totalPriority += pointScore(*(set(rucksack1) & set(rucksack2)))
     print(totalPriority)
 
 
@@ -26,20 +22,16 @@ def part2(lines):
         # skipping by 3 so we gather lines in groups of 3
         seen = []
         elf1 = lines[i]
-        elf2 = lines[i + 1].strip()
-        elf3 = lines[i + 2].strip()
-        for ch in elf1:
-            if ch in elf2 and ch in elf3 and ch not in seen:
-                # finds matching ch in all strings and avoids double counts
-                seen.append(ch)
-                totalPriority += pointScore(ch)
+        elf2 = lines[i + 1]
+        elf3 = lines[i + 2]
+        totalPriority += pointScore(*(set(elf1) & set(elf2) & set(elf3)))
         i += 3
     print("Total priority", totalPriority)
 
 
 def main():
     f = open("Python/Day 3/input.txt", "r")
-    lines = f.readlines()
+    lines = f.read().splitlines()
     part1(lines)
     part2(lines)
     f.close()
