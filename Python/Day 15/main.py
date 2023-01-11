@@ -66,6 +66,5 @@ def main():
     part2Answer = part2(sensors,beacons,maxY)
     print("Part 2",part2Answer)
 
-# not 6448359
 if __name__ == "__main__":
     main()
