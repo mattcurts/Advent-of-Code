@@ -14,9 +14,7 @@ def mix(numbers, order):
 		index = numbers.index(num)
 		value = num.value
 		newIndex = (index + value)%(len(numbers)-1) # accounting for shrinking list
-		if newIndex >= len(numbers):
-			newIndex = newIndex % len(numbers)
-		elif newIndex == 0:
+		if newIndex == 0:
 			newIndex = 0 if value >=0 else len(numbers) #to match puzzle input
 		numbers.insert(newIndex,numbers.pop(index))
 
